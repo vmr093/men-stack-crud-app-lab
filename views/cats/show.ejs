@@ -1,0 +1,40 @@
+<<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>
+    <%= cat.name %>
+  </title> 
+</head>
+
+<body>
+  <div class="cat-details">
+    <h1>
+      <%= cat.name %>
+    </h1>
+    
+    <% if (cat.image) { %>
+        <img class="cat-pic1"
+        src="<%= cat.image %>"
+        alt="Loading cute cat" />
+    <% } else { %>
+    <p>No image for this cat. But use your imagination!</p>
+    <% } %>
+    <div class="cat-actions">
+      <a class="edit-link" href="/cats/<%= cat._id %>/edit">
+        <div class="edit-text">Edit <%= cat.name %></div>
+      </a>
+      <form class="delete-form" action="/cats/<%=cat._id%>?_method=DELETE" method="POST">
+        <button class="delete-button" type="submit">Delete <%= cat.name %></button>
+      </form>
+    </div>
+    <a class="cats-index-link" href="/cats">
+      <div class="index-link-text">Back to cats</div>
+    </a>
+  </div>
+</body>
+
+</html>
